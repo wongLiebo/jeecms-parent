@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>SSO回调函数</title>
+    <link rel="stylesheet" href="${res}/css/reset.css">
+    <script src="${res}/js/jquery-1.12.4.js"></script>
+</head>
+<body>
+
+<script>
+$('#pc').click(function(){
+    $.ajax({
+        type:'PUT',
+        url: "${base}/preview",
+        data: {
+            device: 'pc'
+        },
+        success: function (result) {
+            if(result.code===200){
+				$('.header a').removeClass('pitch')
+				$('#pc').addClass('pitch')
+                $('#iframe').removeClass('is-mobile')
+				$('#iframe').removeClass('is-tablet')
+                $('#iframe').attr('src', $('#iframe').attr('src'));
+            }
+        }
+    });
+})
+</script>
+</body>
+</html>
